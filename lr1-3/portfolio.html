@@ -1,0 +1,334 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+
+<head>
+    <!-- <head> содержит техническую информацию о странице (метаданные, заголовок, подключение стилей). Она не отображается на самой странице. -->
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <!-- Мета-тег viewport управляет масштабированием на мобильных устройствах. -->
+    <meta name="description" content="Портфолио-резюме Калюга Владимир Андреевич – менеджер маркетплейсов (Ozon). Студент ГГПК, специальность программист.">
+    <!-- description — краткое описание страницы, часто отображается в поисковой выдаче. -->
+    <meta name="keywords" content="менеджер маркетплейсов, портфолио, резюме, Ozon, Гродно, HTML, семантика">
+    <!-- keywords — ключевые слова -->
+    <meta name="author" content="Калюга Владимир Андреевич">
+    <!-- author — указывает автора страницы. -->
+    <title>Калюга Владимир | Портфолио менеджера маркетплейсов</title>
+    <!-- <title> — заголовок страницы -->
+
+    <!--  1. Внешний файл стилей (способ 1) -->
+    <link rel="stylesheet" href="style/style.css">
+
+    <!--  2. Внутренняя таблица стилей + импорт (способ 2 и 3)  -->
+    <style>
+        /* Импорт шрифтов (способ импортирования) */
+        @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;700&family=Playfair+Display:wght@400;700&family=Montserrat:wght@300;500&display=swap');
+
+        /* Универсальный селектор (1) */
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        /* Дочерний селектор (2) */
+        nav > a {
+            transition: all 0.2s;
+        }
+        /* Псевдокласс (3) */
+        nav > a:hover {
+            background-color: #e0e0e0;
+            padding: 0.2rem 0.4rem;
+            border-radius: 4px;
+        }
+        /* Селектор атрибута (4) + псевдоэлемент (5) */
+        a[target="_blank"]::after {
+            content: "↗";
+            font-size: 0.8em;
+            margin-left: 0.2rem;
+        }
+
+        /* Пример каскадности: более специфичный селектор переопределяет цвет ссылок */
+        footer a {
+            color: #555;
+        }
+    </style>
+</head>
+<body>
+    <!-- <body> — тело документа.  -->
+
+    <!--  3. Внутритеговое включение (способ 4)  -->
+    <!-- Кнопка авторизации в правом верхнем углу (inline-стили) -->
+    <div style="position: absolute; top: 20px; right: 20px; z-index: 100;">
+        <a href="login.html" target="_blank" style="display: inline-block; padding: 8px 16px; background-color: #2c3e50; color: white; text-decoration: none; border-radius: 20px; font-weight: bold; transition: 0.3s;">🔐 Авторизация</a>
+        <a href="flexbox.html" style="display: inline-block; padding: 8px 16px; margin-left: 8px; background-color: #1f6f8b; color: white; text-decoration: none; border-radius: 20px; font-weight: bold;">ЛР5 Flexbox</a>
+        <!-- При нажатии открывается новый файл login.html в новой вкладке (target="_blank") -->
+    </div>
+
+    <!-- СЕМАНТИЧЕСКИЕ ТЕГИ: header, nav, main, section, article, footer -->
+    <!-- Эти теги делают структуру понятной не только браузеру, но и разработчикам, поисковикам, скринридерам. -->
+
+    <header>
+        <!-- <header> — шапка страницы или раздела. -->
+        <h1>Калюга Владимир Андреевич</h1>
+        <!-- <h1> — заголовок первого уровня.  -->
+        <p><strong>Портфолио менеджера маркетплейсов</strong> | 19 лет · Гродно · будущий программист</p>
+        <!-- <p> — абзац текста. <strong> — жирный шрифт. Символ "·" — это просто точка-разделитель, не спецсимвол. -->
+        <hr> <!-- <hr> — горизонтальная линия-разделитель (тематический разрыв). -->
+    </header>
+
+    <!-- НАВИГАЦИЯ (внутренние / анкерные ссылки + внешние) -->
+    <nav>
+        <!-- <nav> — навигационный блок (меню) со ссылками. -->
+        <h2>🗂 Навигация по странице</h2>
+        <!-- внутренние (якорные) ссылки -->
+        <a href="#about">Обо мне</a>
+        <!-- <a> — ссылка. href="#about" — это якорь на элемент с id="about".  -->
+        <a href="#skills">Навыки (списки)</a>
+        <a href="#media">Медиа</a>
+        <a href="#table">Таблица достижений</a>
+        <a href="#form">Форма связи</a>
+        <!-- внешние ссылки на соцсети / GitHub (открываются в новой вкладке) -->
+        <a href="https://github.com/vovakaluga72" target="_blank" rel="noopener">GitHub (портфолио)</a>
+        <!-- target="_blank" — открыть в новой вкладке. rel="noopener" — безопасность для внешних ссылок. -->
+        <a href="#top">↑ Наверх</a>
+        <!-- href="#top" — стандартный якорь, возвращает в начало страницы -->
+    </nav>
+
+    <main>
+        <!-- <main> — основное, уникальное содержимое страницы. На странице должен быть один <main>. -->
+        <!-- СЕКЦИЯ 1: ИНФОРМАЦИЯ + СПИСКИ + СПЕЦСИМВОЛЫ -->
+        <section id="about">
+            <!-- <section> — тематическая группа контента. id="about" нужен для навигации (якорь). -->
+            <h2>🧑‍💻 О себе <small>(резюме + спецсимволы)</small></h2>
+            <!-- <small> — уменьшает шрифт (второстепенный текст). Эмодзи — тоже допустимые символы. -->
+            <!-- Форматирование текста (ЛР1 п.2): курсив, подчеркнутый, перечеркнутый и др. -->
+            <p class="text-styles">Привет! Меня зовут <strong>Владимир Калюга</strong>. Мне 19 лет, я студент <u>Гродненского государственного политехнического колледжа</u> (ГГПК) по специальности <em>«программист»</em>.</p>
+            <!-- <u> — подчеркнутый текст. <em> — выделение (курсив) с акцентом. -->
+            <p>Параллельно обучаюсь на должность <strong>менеджер маркетплейсов</strong> — занимаюсь карточками товаров, аналитикой продаж и работой с поставщиками. <del>Раньше боялся маркетплейсов</del> — теперь это моя стихия.</p>
+            <!-- <del> — перечеркнутый текст -->
+            <!-- СПЕЦСИМВОЛЫ (ЛР3 п.9) -->
+            <p class="text-decor">Мои ключевые принципы: качество &gt; количество · цена &amp; спрос · 100&percnt; ответственность. Также использую &copy; для контента и &reg; для брендов.</p>
+            <!-- &gt; — символ ">". &amp; — амперсанд "&". &percnt; — "%". &copy; — копирайт "©". &reg; — зарегистрированная торговая марка "®". Это спецсимволы HTML, чтобы не сломать код. -->
+            <!-- Цитата для демонстрации <q> -->
+            <blockquote>«Маркетплейс — это код, который нужно уметь читать» &trade;</blockquote>
+            <!-- <blockquote> — длинная цитата с отступами. &trade; — символ торговой марки "™". -->
+        </section>
+
+        <!-- СПИСКИ (три типа + вложенные) (ЛР2 п.3) -->
+        <section id="skills">
+            <h2>📋 Мои компетенции</h2>
+
+            <h3>1. Навыки менеджера</h3>
+            <ul class="custom-list">
+                <!-- <ul> — маркированный список (unordered list). Каждый пункт — <li>. -->
+                <li>Ведение карточек товаров (Ozon, Wildberries)</li>
+                <li>SEO-оптимизация заголовков и описаний</li>
+                <li>Работа с аналитикой: Excel, Tableau</li>
+                <li>Взаимодействие с поставщиками и логистика</li>
+            </ul>
+
+            <h3>2. План развития</h3>
+            <ol>
+                <!-- <ol> — нумерованный список. Пункты автоматически нумеруются. -->
+                <li>Освоить продвинутую аналитику (SQL)</li>
+                <li>Запустить собственный товар на маркетплейсах</li>
+                <li>Вырасти до категорийного менеджера</li>
+                <li>Создать Telegram-канал про маркетплейсы</li>
+            </ol>
+
+            <h3>3. Используемые термины</h3>
+            <dl>
+                <!-- <dl> — список определений (description list). -->
+                <dt>Ozon</dt><dd>Крупнейший российский маркетплейс.</dd>
+                <!-- <dt> — термин, <dd> — определение термина. -->
+                <dt>AKF</dt><dd>Average check frequency — частота покупок.</dd>
+                <dt>CTR</dt><dd>Click-through rate — кликабельность карточки.</dd>
+            </dl>
+
+            <h3>Любимые ЯП / технологии</h3>
+            <ul>
+                <li>Языки программирования
+                    <ul>
+                        <!-- Вложенный список: внутри <li> может быть другой список. -->
+                        <li>Python</li>
+                        <li>С#/C++</li>
+                        <li>HTML</li>
+                        <li>SQL</li>
+                    </ul>
+                </li>
+                <li>Инструменты
+                    <ul>
+                        <li>Excel / Google Sheets</li>
+                        <li>Ozon/WB Seller</li>
+                        <li>MPStats</li>
+                    </ul>
+                </li>
+            </ul>
+        </section>
+
+        <!-- СЕКЦИЯ 3: ИЗОБРАЖЕНИЯ (ЛР2 п.2) + графическая ссылка (ЛР2 п.1) -->
+        <section>
+            <h2>📸 Фото и графическая ссылка</h2>
+            <article>
+                <!-- <article> — самостоятельная, независимая часть страницы (пост, новость, виджет). -->
+                <figure>
+                    <!-- <figure> — медиа-контент (изображение, диаграмма) с подписью. -->
+                    <img src="image/photo.jpg" alt="Портрет Владимира Калюги" width="200" height="200" class="round-image gradient-border">
+                    <!-- <img src="..." alt="..."> — вставка изображения. alt — альтернативный текст (для доступности и если картинка не загрузится). -->
+                    <figcaption><h3>Владимир Калюга — помощник менеджера Ozon</h3></figcaption>
+                    <!-- <figcaption> — подпись к <figure> -->
+                </figure>
+                <!-- графическая ссылка: клик на иконку ведет на GitHub (внешняя ссылка) -->
+                <p>Мой GitHub: <a href="https://github.com/vovakaluga72" target="_blank">🐙 GitHub</a></p>
+            </article>
+        </section>
+
+        <!-- СЕКЦИЯ 4: АУДИО И ВИДЕО (ЛР2 п.5) + iframe YouTube -->
+        <section id="media">
+            <h2>🎵 Аудио и видео контент</h2>
+            <!-- аудио с элементами управления -->
+            <audio controls>
+                <!-- <audio controls> — встраивает аудиоплеер с элементами управления. -->
+                <source src="audio/audi.ogg" type="audio/mpeg">
+                <!-- <source> указывает путь к файлу и его тип. Если файл не поддерживается, покажется текст ниже. -->
+                Ваш браузер не поддерживает audio. <a href="media/ozon-podcast.mp3">Скачать подкаст</a>
+            </audio>
+
+            <!-- видео -->
+            <p>Видео:</p>
+            <video controls width="400">
+                <!-- <video controls> — видео с элементами управления. -->
+                <source src="video/video.mp4" type="video/mp4">
+                Ваш браузер не поддерживает видео.
+            </video>
+
+            <!-- Внешнее видео YouTube по заданию п.5 -->
+            <p>Видео (YouTube):</p>
+            <iframe width="400" height="225" src="https://www.youtube.com/embed/4Wzn4485J_4" title="YouTube пример" style="border:1px solid black;" allowfullscreen></iframe>
+            <!-- <iframe> — встраивание другой страницы (например, YouTube). allowfullscreen разрешает полноэкранный режим. -->
+        </section>
+
+        <!-- СЕКЦИЯ 5: ТАБЛИЦА С ОБЪЕДИНЕНИЕМ ЯЧЕЕК (ЛР2 п.4, объединение по вертикали и горизонтали) -->
+        <section id="table">
+            <h2>📊 Таблица достижений</h2>
+            <table class="styled-table">
+                <!-- <table> — таблица. -->
+                <caption>Опыт работы и образование</caption>
+                <!-- <caption> — заголовок таблицы. -->
+                <thead>
+                    <!-- <thead> — шапка таблицы (логически отделяет заголовки колонок). -->
+                    <tr>
+                        <!-- <tr> — строка таблицы. -->
+                        <th>Период</th>
+                        <th>Место / Должность</th>
+                        <th>Обязанности / Результат</th>
+                        <!-- <th> — ячейка-заголовок (жирный текст по умолчанию). -->
+                    </tr>
+                </thead>
+                <tbody>
+                    <!-- <tbody> — тело таблицы (основные данные). -->
+                    <tr>
+                        <td rowspan="2">2023–н.в.</td> <!-- rowspan="2" — объединение ячеек по вертикали (ячейка занимает 2 строки). -->
+                        <td>Помощник менеджера Ozon</td>
+                        <td>Ведение 50+ карточек товаров, увеличение CTR на 15%</td>
+                    </tr>
+                    <tr>
+                        <!-- Здесь нет ячейки для периода, так как она объединена rowspan из предыдущей строки. -->
+                        <td>Гродненский политехнический колледж</td>
+                        <td>Студент 3 курса, специальность «программист»</td>
+                    </tr>
+                    <tr>
+                        <td>2022–2023</td>
+                        <td colspan="2">Курс «Менеджер маркетплейсов» (Skillbox) — диплом с отличием</td> <!-- colspan="2" — объединение ячеек по горизонтали (занимает 2 колонки). -->
+                    </tr>
+                </tbody>
+            </table>
+        </section>
+
+        <!-- СЕКЦИЯ 6: ПОЛЬЗОВАТЕЛЬСКАЯ ФОРМА (ЛР3: анкета/обратная связь) -->
+        <section id="form">
+            <h2>📬 Форма обратной связи (опрос / регистрация)</h2>
+            <form action="#" method="post">
+                <!-- <form> — форма для отправки данных. action="#" отправляет на ту же страницу. method="post" — способ отправки (данные не видны в URL). -->
+                <fieldset>
+                    <!-- <fieldset> — группировка элементов формы. -->
+                    <legend>Анкета кандидата (для сотрудничества)</legend>
+                    <!-- <legend> — заголовок группы fieldset. -->
+
+                    <p><label for="name">Ваше имя:</label><br>
+                    <!-- <label for="..."> — подпись к полю ввода. for связывает с id поля. -->
+                    <input type="text" id="name" name="name" placeholder="Иван Иванов" required></p>
+                    <!-- <input> — поле ввода. type="text" — обычный текст. placeholder — подсказка внутри поля. required — обязательно для заполнения. -->
+
+                    <p><label for="email">Email:</label><br>
+                    <input type="email" id="email" name="email" placeholder="ivan@example.com" required></p>
+                    <!-- type="email" — проверяет, что введен email (собачка и точка). -->
+
+                    <p><label for="phone">Телефон (необязательно):</label><br>
+                    <input type="tel" id="phone" name="phone" placeholder="+375 (29) xxx-xx-xx"></p>
+                    <!-- type="tel" — для телефона (не валидирует строго, но показывает нужную клавиатуру на мобильных). -->
+
+                    <p><label>Выберите тип обращения:</label><br>
+                    <!-- Радиокнопки: имя одинаковое (name="subject"), чтобы можно было выбрать только один вариант. -->
+                    <input type="radio" id="job" name="subject" value="job"><label for="job">Предложение работы</label><br>
+                    <input type="radio" id="question" name="subject" value="question"><label for="question">Вопрос по портфолио</label><br>
+                    <input type="radio" id="other" name="subject" value="other"><label for="other">Другое</label></p>
+
+                    <p><label for="msg">Сообщение:</label><br>
+                    <textarea id="msg" name="message" rows="4" cols="50" placeholder="Напишите, что вас интересует..."></textarea></p>
+                    <!-- <textarea> — многострочное текстовое поле. rows и cols — размеры. -->
+
+                    <p><label>Какие навыки вам интересны? (множественный выбор)</label><br>
+                    <!-- Чекбоксы (можно выбрать несколько). У каждого уникальный id, но name может быть разным или массивом. -->
+                    <input type="checkbox" id="skill1" name="skill1" value="ozon"><label for="skill1">Управление Ozon</label><br>
+                    <input type="checkbox" id="skill2" name="skill2" value="analytics"><label for="skill2">Аналитика</label><br>
+                    <input type="checkbox" id="skill3" name="skill3" value="seo"><label for="skill3">SEO карточек</label></p>
+
+                    <p><label for="exp">Опыт работы (лет):</label><br>
+                    <select id="exp" name="experience">
+                        <!-- <select> — выпадающий список. -->
+                        <option value="0">менее 1 года</option>
+                        <option value="1" selected>1–2 года</option> <!-- selected — по умолчанию выбран этот пункт. -->
+                        <option value="3">3–5 лет</option>
+                        <option value="5">более 5 лет</option>
+                    </select></p>
+
+                    <!-- скрытое поле -->
+                    <input type="hidden" name="spam_protection" value="ok">
+                    <!-- type="hidden" — скрытое поле, не видно пользователю, но отправляется на сервер. -->
+
+                    <p><input type="submit" value="Отправить" class="form-btn"><input type="reset" value="Очистить" class="form-btn"></p>
+                    <!-- type="submit" — кнопка отправки формы. type="reset" — кнопка сброса полей формы. -->
+                </fieldset>
+            </form>
+            <p class="note">✨ Форма демонстрирует radio, checkbox, select, textarea, input types. Работает как заглушка (action="#").</p>
+            <!-- class="note" — для применения CSS-стилей. -->
+        </section>
+
+        <!-- доп. секция article для демонстрации семантики -->
+        <article>
+            <h3>📌 Почему маркетплейсы? (мотивация)</h3>
+            <p>Современная торговля уходит в онлайн, а умение управлять товарами на таких площадках как Ozon даёт колоссальные возможности. Я совмещаю программистский бекграунд и коммерческое чутьё — это моё преимущество.</p>
+            <!-- еще немного спецсимволов -->
+            <p>Мой девиз: «Продажи = трафик &times; конверсия &divide; возвраты».</p>
+            <!-- &times; — знак умножения "×". &divide; — знак деления "÷". -->
+        </article>
+    </main>
+
+    <!-- ПОДВАЛ (footer) -->
+    <footer>
+        <!-- <footer> — подвал страницы. -->
+        <p>&copy; 2026 Калюга Владимир Андреевич. Все права защищены.</p>
+        <address>
+            <!-- <address> — контактная информация. -->
+            Гродно, Беларусь | <a href="https://t.me/vovan14_09" target="_blank">Telegram</a>
+            <!-- ссылка на Telegram -->
+        </address>
+        <!-- валидация w3c (ссылка на внешний сервис) -->
+        <p>
+            <a href="https://validator.w3.org/" target="_blank">Проверить валидность HTML (W3C)</a>
+            <!-- Ссылка на онлайн-валидатор W3C. -->
+        </p>
+    </footer>
+</body>
+</html>

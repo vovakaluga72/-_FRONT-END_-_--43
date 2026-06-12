@@ -1,0 +1,120 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Авторизация и регистрация | Портфолио</title>
+    <!-- Подключаем стили страницы входа -->
+    <link rel="stylesheet" href="style/stylelogin.css">
+</head>
+<body>
+    <div class="center-container">
+        <div class="content">
+            
+            <!-- Вкладки для перехода между авторизацией и регистрацией -->
+            <div class="tabs">
+                <div class="tab"><a href="#login">🔐 Авторизация</a></div>
+                <div class="tab"><a href="#register">📝 Регистрация</a></div>
+            </div>
+            
+            <hr>
+            
+            <!-- АВТОРИЗАЦИЯ -->
+            <div id="login">
+                <h2>🔐 Авторизация</h2>
+                
+                <form action="#" method="post">
+                    <p>
+                        <label for="username">Имя пользователя:</label><br>
+                        <input type="text" id="username" name="username" placeholder="введите логин" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label for="password">Пароль:</label><br>
+                        <input type="password" id="password" name="password" placeholder="введите пароль" required size="30">
+                    </p>
+                    
+                    <p>
+                        <input type="submit" value="Войти">
+                        <input type="reset" value="Очистить">
+                    </p>
+                </form>
+            </div>
+            
+            <hr>
+            
+            <!-- РЕГИСТРАЦИЯ -->
+            <div id="register">
+                <h2>📝 Регистрация нового пользователя</h2>
+                
+                <form action="#" method="post">
+                    <p>
+                        <label for="reg_name">Имя и фамилия:</label><br>
+                        <input type="text" id="reg_name" name="reg_name" placeholder="Иван Иванов" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label for="reg_email">Email:</label><br>
+                        <input type="email" id="reg_email" name="reg_email" placeholder="ivan@example.com" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label for="reg_username">Придумайте логин:</label><br>
+                        <input type="text" id="reg_username" name="reg_username" placeholder="логин" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label for="reg_password">Придумайте пароль:</label><br>
+                        <input type="password" id="reg_password" name="reg_password" placeholder="пароль" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label for="reg_password2">Повторите пароль:</label><br>
+                        <input type="password" id="reg_password2" name="reg_password2" placeholder="повторите пароль" required size="30">
+                    </p>
+                    
+                    <p>
+                        <label>Ваш пол:</label><br>
+                        <input type="radio" id="male" name="gender" value="male">
+                        <label for="male">Мужской</label>
+                        <input type="radio" id="female" name="gender" value="female">
+                        <label for="female">Женский</label>
+                    </p>
+                    
+                    <p>
+                        <label for="birth_year">Год рождения:</label><br>
+                        <select id="birth_year" name="birth_year">
+                            <option value="">выберите год</option>
+                            <option value="2000">2000</option>
+                            <option value="2001">2001</option>
+                            <option value="2002">2002</option>
+                            <option value="2003">2003</option>
+                            <option value="2004">2004</option>
+                            <option value="2005">2005</option>
+                            <option value="2006">2006</option>
+                            <option value="2007" selected>2007</option>
+                            <option value="2008">2008</option>
+                        </select>
+                    </p>
+                    
+                    <p>
+                        <input type="checkbox" id="agree" name="agree" required>
+                        <label for="agree">Я согласен на обработку персональных данных</label>
+                    </p>
+                    
+                    <p>
+                        <input type="submit" value="Зарегистрироваться">
+                        <input type="reset" value="Очистить форму">
+                    </p>
+                </form>
+            </div>
+            
+            <hr>
+            
+            <p>
+                <a href="portfolio.html">← Вернуться на главную</a>
+            </p>
+        </div>
+    </div>
+</body>
+</html>

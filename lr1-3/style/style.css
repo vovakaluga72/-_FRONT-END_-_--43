@@ -1,0 +1,227 @@
+﻿/* Основные стили страницы портфолио */
+body {
+    font-family: 'Inter', 'Montserrat', Arial, sans-serif; /* 3 нестандартных шрифта */
+    max-width: 1200px;
+    margin: 2rem auto;   /* относительная единица rem */
+    padding: 0 20px;     /* абсолютная единица px */
+    background: linear-gradient(135deg, #f9f7f5 0%, #f0ede8 100%); /* градиент фона */
+    color: #1e2a2e;
+    line-height: 1.5;
+}
+
+/* Кастомный маркированный список */
+.custom-list {
+    list-style: none;
+    padding-left: 0;
+}
+.custom-list li::before {
+    content: "▶";
+    color: #e67e22;
+    font-weight: bold;
+    display: inline-block;
+    width: 1.2em;
+    margin-left: -1.2em;
+}
+
+/* Секция таблицы */
+#table {
+    margin-top: 2rem;
+    background: #fff;   /* цвет блока */
+}
+
+/* Абзац сразу после заголовка h2 */
+h2 + p {
+    font-size: 1.05rem;
+    border-left: 3px solid #e67e22;
+    padding-left: 1rem;
+    margin: 1rem 0;
+}
+
+/* Абзац в подвале */
+footer > p {
+    font-size: 0.9rem;
+    color: #555;
+}
+
+/* Поля ввода и их состояние фокуса */
+input[type="text"],
+input[type="email"],
+input[type="tel"],
+textarea,
+select {
+    width: 100%;
+    max-width: 400px;
+    padding: 0.5rem;
+    border: 1px solid #ccc;
+    border-radius: 8px;
+    transition: 0.2s;
+    background-color: #fff;
+}
+input[type="text"]:focus,
+input[type="email"]:focus,
+input[type="tel"]:focus,
+textarea:focus,
+select:focus {
+    border-color: #e67e22;
+    outline: none;
+    box-shadow: 0 0 5px rgba(230,126,34,0.3);
+}
+
+/* Эффект при наведении на ссылки и кнопки формы */
+a:hover,
+.form-btn:hover {
+    color: #e67e22;
+    transform: scale(1.02); /* трансформация */
+}
+.form-btn:hover {
+    background-color: #e67e22;
+}
+
+/* Градиентная рамка изображения */
+.gradient-border {
+    border-radius: 50%;
+    border: 3px solid;
+    border-image: linear-gradient(45deg, #e67e22, #2c3e50) 1;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+}
+
+/* Единицы измерения */
+/* Абсолютные: px; относительные: %, em, rem; вычисляемые: calc() */
+body {
+    font-size: 16px; /* абсолютная */
+}
+h1 {
+    font-size: calc(1.5rem + 1vw); /* вычисляемая */
+}
+.container {
+    width: 80%; /* относительная */
+    margin: 1em auto; /* em */
+}
+
+/* Шрифты заголовков */
+h1, h2, h3 {
+    font-family: 'Playfair Display', 'Montserrat', serif;
+    color: #2c3e50;
+}
+
+/* Цвета */
+body {
+    background: linear-gradient(135deg, #f9f7f5 0%, #f0ede8 100%);
+}
+.note {
+    background: #f0f0f0;
+    border-left: 4px solid #e67e22;
+}
+
+/* Оформление текста через CSS */
+.text-styles {
+    font-style: italic;    /* курсив */
+}
+.text-decor {
+    text-decoration: line-through; /* зачеркнутый */
+    font-weight: bold;             /* жирный */
+}
+
+/* Стилизация ссылок */
+a {
+    color: #2c3e50;
+    text-decoration: none;
+    transition: all 0.2s ease;
+}
+a:hover {
+    color: #e67e22;
+    text-decoration: underline;
+}
+
+/* Стилизация изображений */
+.round-image {
+    border-radius: 50%;
+    border: 1px solid #ccc;
+    box-shadow: 0 4px 12px rgba(0,0,0,0.1);
+    transition: transform 0.3s;
+}
+.round-image:hover {
+    transform: scale(1.05);
+}
+.gradient-border {
+    border: 3px solid transparent;
+    background-clip: padding-box;
+    position: relative;
+}
+.gradient-border::after {
+    content: "";
+    position: absolute;
+    top: -3px; left: -3px; right: -3px; bottom: -3px;
+    background: linear-gradient(45deg, #e67e22, #2c3e50);
+    border-radius: 50%;
+    z-index: -1;
+}
+
+/* Стилизация вложенных списков */
+ul ul {
+    list-style-type: circle;
+    margin-left: 1.5rem;
+}
+
+/* Стилизация таблицы */
+.styled-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin: 1rem 0;
+    background-color: #fff;
+}
+.styled-table th, .styled-table td {
+    border: 1px solid #ddd;
+    padding: 10px;
+    text-align: left;
+}
+.styled-table th {
+    background-color: #2c3e50;
+    color: white;
+}
+.styled-table tr:nth-child(even) {
+    background-color: #f2f2f2;
+}
+.styled-table tr:hover {
+    background-color: #e9ecef;
+}
+
+/* Стилизация кнопок и полей формы */
+.form-btn {
+    background-color: #2c3e50;
+    color: white;
+    border: none;
+    padding: 0.6rem 1.2rem;
+    border-radius: 30px;
+    cursor: pointer;
+    transition: all 0.2s;
+    font-weight: bold;
+    margin-right: 0.5rem;
+}
+.form-btn:hover {
+    background-color: #e67e22;
+    transform: scale(1.02);
+}
+input, select, textarea {
+    border: 1px solid #ccc;
+    border-radius: 6px;
+    padding: 0.5rem;
+}
+
+/* Анимация появления блока */
+.note {
+    animation: fadeIn 1s ease-out;
+}
+@keyframes fadeIn {
+    from { opacity: 0; transform: translateY(10px); }
+    to { opacity: 1; transform: translateY(0); }
+}
+
+/* Каскадность: более специфичный селектор для ссылок в footer */
+footer a {
+    color: #888;
+}
+footer a:hover {
+    color: #e67e22;
+}
+/* Приоритет: inline-стили > id > классы > теги */

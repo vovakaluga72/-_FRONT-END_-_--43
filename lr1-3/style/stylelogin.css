@@ -1,0 +1,30 @@
+﻿/* Стили для страницы login.html */
+.center-container {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    min-height: 100vh;
+    margin: 0;
+}
+
+.content {
+    max-width: 600px;
+    width: 100%;
+}
+
+.tabs {
+    display: flex;
+    gap: 10px;
+    margin-bottom: 20px;
+}
+
+.tab {
+    flex: 1;
+    text-align: center;
+    background-color: #f0f0f0;
+    padding: 10px;
+}
+
+hr {
+    border: 1px solid #ccc;
+}
