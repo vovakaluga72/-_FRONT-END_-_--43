@@ -1,0 +1,485 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>lr8/index3 - Сетка с вложенными блоками</title>
+  <style>
+    * { box-sizing: border-box; margin: 0; padding: 0; }
+
+    body {
+      font-family: "Segoe UI", Arial, sans-serif;
+      padding: 20px;
+      background: #f5f6fa;
+    }
+
+    .layout {
+      width: 100%;
+      max-width: 1280px;
+      min-width: 800px;
+      margin: 0 auto;
+      border: 1px solid #000;
+      background: #fff;
+      display: grid;
+      grid-template-rows: auto 1fr auto;
+      grid-template-columns: 1fr;
+      grid-template-areas:
+        "header"
+        "grid"
+        "footer";
+    }
+
+    .header,
+    .footer {
+      height: 52px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 30px;
+      font-weight: 700;
+      line-height: 1;
+      background: #efefef;
+      border-color: #000;
+    }
+
+    .header {
+      grid-area: header;
+      border-bottom: 1px solid #000;
+    }
+
+    .footer {
+      grid-area: footer;
+      border-top: 1px solid #000;
+    }
+
+    .grid {
+      grid-area: grid;
+      display: grid;
+      grid-template-columns: 30% 40% 30%;
+      grid-template-rows: repeat(3, minmax(90px, auto));
+      grid-template-areas:
+        "b1 b4 b5"
+        "b2 b4 b6"
+        "b3 b4 b7";
+    }
+
+    .block {
+      border: 1px solid #000;
+      padding: 8px;
+      background: #e7e7e7;
+    }
+
+    .num {
+      height: 100%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 42px;
+      font-weight: 700;
+      color: #1f2f52;
+    }
+
+    .b1 { grid-area: b1; }
+    .b2 { grid-area: b2; }
+    .b3 { grid-area: b3; }
+    .b4 { grid-area: b4; background: #fff; }
+    .b5 { grid-area: b5; background: #fff; }
+    .b6 { grid-area: b6; }
+    .b7 { grid-area: b7; }
+
+    .order-page {
+      width: 100%;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #2e3240;
+      font-size: 14px;
+    }
+
+    .top-row {
+      display: flex;
+      align-items: baseline;
+      justify-content: space-between;
+      gap: 10px;
+      margin-bottom: 10px;
+    }
+
+    .top-row h1 {
+      font-size: 20px;
+      font-weight: 700;
+    }
+
+    .top-row a {
+      font-size: 12px;
+      color: #6d7390;
+      text-decoration: underline;
+    }
+
+    .product-section h2 {
+      font-size: 17px;
+      margin-bottom: 10px;
+      font-weight: 700;
+      color: #2d3344;
+    }
+
+    .order-grid {
+      display: grid;
+      gap: 8px;
+      margin-bottom: 10px;
+    }
+
+    .params {
+      display: grid;
+      gap: 6px;
+    }
+
+    .row {
+      display: grid;
+      grid-template-columns: 1fr auto auto;
+      gap: 8px;
+      align-items: baseline;
+      font-size: 13px;
+    }
+
+    .label.strong,
+    .value.strong {
+      font-weight: 700;
+    }
+
+    .row.total {
+      border-top: 1px solid #daddE6;
+      padding-top: 6px;
+    }
+
+    .hint {
+      font-size: 12px;
+      color: #616884;
+    }
+
+    .hint a {
+      color: #455fba;
+    }
+
+    .form-grid {
+      display: grid;
+      grid-template-columns: 1fr 1.5fr;
+      gap: 8px 10px;
+      margin-top: 10px;
+      align-items: center;
+    }
+
+    .form-grid label {
+      font-size: 12px;
+      color: #414760;
+    }
+
+    .form-grid input,
+    .form-grid textarea {
+      width: 100%;
+      border: 1px solid #ccd1e0;
+      border-radius: 4px;
+      padding: 6px 8px;
+      font-size: 12px;
+      font-family: inherit;
+      background: #fff;
+    }
+
+    .form-grid textarea {
+      min-height: 58px;
+      resize: vertical;
+    }
+
+    .form-grid button {
+      border: 0;
+      border-radius: 4px;
+      background: #3f4044;
+      color: #fff;
+      font-size: 12px;
+      font-weight: 700;
+      padding: 8px 10px;
+      justify-self: start;
+      cursor: pointer;
+    }
+
+    .card {
+      width: 100%;
+      border: 1px solid #ececef;
+      border-radius: 8px;
+      padding: 10px;
+      background: #fff;
+      color: #2e3240;
+    }
+
+    .image-box {
+      border-radius: 4px;
+      background: #f2f2f3;
+      border: 1px solid #f0f0f2;
+      height: 120px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+      margin-bottom: 8px;
+    }
+
+    .image-box img {
+      width: 50%;
+      height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    .title {
+      margin: 0 0 6px;
+      font-size: 16px;
+      line-height: 1.2;
+      font-weight: 600;
+      color: #343847;
+    }
+
+    .price {
+      margin: 0 0 8px;
+      font-size: 18px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #1f2434;
+    }
+
+    .sizes-title {
+      margin: 0 0 6px;
+      font-size: 14px;
+      font-weight: 700;
+      color: #2d3344;
+    }
+
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      row-gap: 4px;
+      column-gap: 6px;
+      align-items: end;
+      margin-bottom: 8px;
+      font-size: 11px;
+    }
+
+    .label {
+      color: #8d92a3;
+      line-height: 1;
+    }
+
+    .value {
+      color: #343847;
+      line-height: 1;
+      font-weight: 600;
+    }
+
+    .mult {
+      color: #535760;
+      line-height: 1;
+      text-align: center;
+    }
+
+    .end {
+      text-align: right;
+    }
+
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 6px;
+      background: #3f4044;
+      color: #fff;
+      font-size: 13px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 10px;
+      cursor: pointer;
+    }
+
+    .more {
+      display: block;
+      text-align: center;
+      margin-top: 8px;
+      font-size: 12px;
+      line-height: 1.15;
+      color: #9da2b2;
+      text-decoration-color: #9da2b2;
+      text-underline-offset: 3px;
+    }
+
+    @media (min-width: 769px) and (max-width: 1024px) {
+      .layout { max-width: 1024px; }
+    }
+
+    @media (min-width: 1025px) and (max-width: 1200px) {
+      .layout { max-width: 1200px; }
+    }
+
+    @media (min-width: 1201px) {
+      .layout { max-width: 1280px; }
+    }
+
+    @media (min-width: 481px) and (max-width: 768px) {
+      .layout {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 55% 45%;
+        grid-template-rows: repeat(4, minmax(90px, auto));
+        grid-template-areas:
+          "b1 b4"
+          "b2 b4"
+          "b3 b4"
+          "b5 b6";
+      }
+
+      .b7 { display: none; }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid .spacer {
+        display: none;
+      }
+    }
+
+    @media (max-width: 480px) {
+      body { padding: 10px; }
+
+      .layout {
+        min-width: 0;
+        max-width: 100%;
+      }
+
+      .grid {
+        grid-template-columns: 1fr;
+        grid-template-rows: repeat(6, minmax(84px, auto));
+        grid-template-areas:
+          "b1"
+          "b2"
+          "b3"
+          "b4"
+          "b5"
+          "b6";
+      }
+
+      .b7 { display: none; }
+
+      .num {
+        font-size: 34px;
+      }
+
+      .row {
+        grid-template-columns: 1fr;
+      }
+
+      .sizes-grid {
+        grid-template-columns: 1fr;
+        gap: 4px;
+      }
+
+      .mult {
+        display: none;
+      }
+
+      .end {
+        text-align: left;
+      }
+
+      .form-grid {
+        grid-template-columns: 1fr;
+      }
+
+      .form-grid .spacer {
+        display: none;
+      }
+    }
+  </style>
+</head>
+<body>
+  <div class="layout">
+    <div class="header">Шапка</div>
+
+    <div class="grid">
+      <div class="block b1"><div class="num">1</div></div>
+      <div class="block b2"><div class="num">2</div></div>
+      <div class="block b3"><div class="num">3</div></div>
+
+      <div class="block b4">
+        <main class="order-page" aria-label="Блок из lr8/index">
+          <header class="top-row">
+            <h1>Заказ товара</h1>
+            <a href="#">Отменить заказ</a>
+          </header>
+
+          <section class="product-section">
+            <h2>Строительный мусоропровод</h2>
+
+            <div class="order-grid">
+              <div class="params">
+                <div class="row"><span class="label strong">Высота:</span><span class="value strong">16 м</span></div>
+                <div class="row"><span class="label">Секций с цепями:</span><span class="value">15 шт.</span><span class="price">4 272 000 р.</span></div>
+                <div class="row"><span class="label">Погрузочных воронок:</span><span class="value">1 шт.</span><span class="price">312 000 р.</span></div>
+                <div class="row"><span class="label">Крепежей к окну:</span><span class="value">1 шт.</span><span class="price">720 000 р.</span></div>
+                <div class="row total"><span></span><span></span><span class="value strong">5 037 000 р.</span></div>
+              </div>
+
+              <p class="hint">Чтобы изменить заказ, <a href="#">вернитесь</a> к расчёту комплекта.</p>
+            </div>
+          </section>
+
+          <form class="form-grid">
+            <label for="name">Представьтесь</label>
+            <input id="name" type="text" />
+
+            <label for="phone">Ваш телефон</label>
+            <input id="phone" type="tel" />
+
+            <label for="note">Примечания к заказу</label>
+            <textarea id="note"></textarea>
+
+            <div class="spacer"></div>
+            <button type="submit">Отправить</button>
+          </form>
+        </main>
+      </div>
+
+      <div class="block b5">
+        <article class="card" aria-label="Блок из lr8/index2">
+          <div class="image-box">
+            <img src="../image/lr8.jpg" alt="Кухонный стол Хэллер Light" />
+          </div>
+
+          <h1 class="title">Кухонный стол Хэллер Light</h1>
+          <p class="price">1082 руб.</p>
+
+          <h2 class="sizes-title">Размеры</h2>
+          <section class="sizes-grid" aria-label="Размеры стола">
+            <div class="label">Длина</div>
+            <div></div>
+            <div class="label">Ширина</div>
+            <div></div>
+            <div class="label end">Высота</div>
+
+            <div class="value">100 см</div>
+            <div class="mult">x</div>
+            <div class="value">100 см</div>
+            <div class="mult">x</div>
+            <div class="value end">75 см</div>
+          </section>
+
+          <button class="btn" type="button">В корзину</button>
+          <a class="more" href="#">Подробнее о товаре</a>
+        </article>
+      </div>
+
+      <div class="block b6"><div class="num">6</div></div>
+      <div class="block b7"><div class="num">7</div></div>
+    </div>
+
+    <div class="footer">Подвал</div>
+  </div>
+</body>
+</html>

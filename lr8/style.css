@@ -1,0 +1,217 @@
+﻿/* Базовый сброс, чтобы padding/border не ломали размеры */
+* {
+  box-sizing: border-box;
+}
+
+/* Фон страницы и общий шрифт */
+body {
+  margin: 0; /* Убираем внешний отступ у всей страницы */
+  font-family: Arial, sans-serif;
+  background: #6d6666;
+  color: #222;
+}
+
+/* Главный блок с фиксированной шириной и внутренними отступами */
+.order-page {
+  max-width: 1320px; /* Максимальная ширина основного блока */
+  margin: 24px auto; /* 24px сверху/снизу, по центру по горизонтали */
+  background: #f5f5f5;
+  padding: 0 48px 36px; /* Внутренние отступы: сверху 0, по бокам 48px, снизу 36px */
+}
+
+/* Верхняя grid-строка: заголовок слева, ссылка справа */
+.top-row {
+  display: grid;
+  grid-template-columns: 1fr auto; /* Широкая колонка под заголовок + узкая под ссылку */
+  align-items: start;
+  gap: 12px; /* Расстояние между заголовком и ссылкой */
+  margin-bottom: 24px; /* Отступ до следующего блока */
+}
+
+/* Оформление основного заголовка */
+h1 {
+  margin: 0; /* Убираем стандартные отступы h1 */
+  padding: 6px 18px; /* Внутренние отступы плашки заголовка */
+  font-size: 58px; /* Размер текста заголовка */
+  font-weight: 500;
+  line-height: 1; /* Плотная высота строки */
+  background: #e9e9e9;
+  border-radius: 14px; /* Скругление плашки */
+  justify-self: start;
+}
+
+/* Ссылка "Отменить заказ" */
+.top-row a {
+  margin-top: 8px; /* Небольшое смещение ссылки вниз */
+  color: #5f7a8f;
+  font-size: 31px; /* Размер текста ссылки */
+  text-decoration: underline;
+}
+
+/* Подзаголовок товара */
+h2 {
+  margin: 0 0 24px; /* Отступ вниз до таблицы параметров */
+  font-size: 47px; /* Размер подзаголовка */
+  font-weight: 400;
+}
+
+/* Двухколоночная сетка: таблица параметров + подсказка */
+.order-grid {
+  display: grid;
+  grid-template-columns: 1fr 440px; /* Левая гибкая колонка + правая фиксированная 390px */
+  gap: 36px; /* Расстояние между колонками */
+  align-items: center;
+  margin-bottom: 54px; /* Отступ до формы */
+}
+
+/* Вертикальный список строк с параметрами */
+.params {
+  display: grid;
+  gap: 10px; /* Вертикальный интервал между строками параметров */
+}
+
+/* Одна строка параметра: название, количество, цена */
+.row {
+  display: grid;
+  grid-template-columns: 290px 140px 1fr; /* Колонки: название, количество, цена */
+  align-items: baseline;
+  column-gap: 12px; /* Горизонтальный интервал внутри строки */
+  font-size: 23px; /* Размер текста в таблице параметров */
+}
+
+/* Выделение жирным первой строки (высота) */
+.label.strong,
+.value.strong {
+  font-weight: 700;
+  margin-bottom: 6px; /* Микро-отступ под строкой "Высота" */
+}
+
+/* Итоговая строка с суммой */
+.total {
+  margin-top: 2px; /* Легкий отступ перед итогом */
+}
+
+.total .value {
+  font-weight: 700;
+}
+
+.total .price {
+  font-style: italic;
+}
+
+/* Блок подсказки справа */
+.hint {
+  margin: 0; /* Убираем стандартный отступ параграфа */
+  font-size: 27px; /* Размер текста подсказки */
+  line-height: 1.34; /* Межстрочный интервал подсказки */
+  font-style: italic;
+}
+
+/* Цвет ссылки внутри подсказки */
+.hint a {
+  color: #5f7a8f;
+}
+
+/* Сетка формы: подпись поля + поле ввода */
+.form-grid {
+  display: grid;
+  grid-template-columns: 290px 1fr; /* Левая колонка подписи, правая поля */
+  gap: 14px 18px; /* 14px между строками, 18px между колонками */
+  align-items: start;
+}
+
+/* Подписи полей формы */
+.form-grid label {
+  font-size: 27px; /* Размер текста подписей формы */
+  line-height: 1.35; /* Высота строки подписей */
+}
+
+/* Наследуем единый шрифт для элементов формы */
+input,
+textarea,
+button {
+  font: inherit;
+}
+
+/* Общий стиль полей ввода */
+input,
+textarea {
+  width: 100%; /* Поле занимает всю ширину своей колонки */
+  border: 1px solid #bdbdbd; /* Толщина и цвет рамки поля */
+  background: #fff;
+}
+
+/* Высота однострочных полей */
+input {
+  height: 50px; /* Высота однострочного поля */
+}
+
+/* Размеры и поведение многострочного поля */
+textarea {
+  height: 185px; /* Базовая высота поля примечаний */
+  resize: vertical;
+}
+
+/* Оформление кнопки отправки */
+button {
+  justify-self: start;
+  min-width: 215px; /* Минимальная ширина кнопки */
+  height: 64px; /* Высота кнопки */
+  border: 1px solid #aaaaaa; /* Толщина и цвет рамки кнопки */
+  border-radius: 4px; /* Скругление углов кнопки */
+  background: #f7f7f7;
+  font-size: 43px; /* Размер текста кнопки */
+  cursor: pointer;
+}
+
+/* Адаптив: перестройка сеток и масштаб текста для узких экранов */
+@media (max-width: 900px) {
+  /* Точка адаптива: правила действуют при ширине экрана <= 900px */
+  .order-page {
+    margin: 0; /* Убираем внешние отступы контейнера */
+    padding: 14px; /* Уменьшаем внутренние отступы на мобильных */
+  }
+
+  .top-row {
+    grid-template-columns: 1fr;
+  }
+
+  h1 {
+    font-size: clamp(34px, 8vw, 58px); /* Адаптивный размер заголовка */
+  }
+
+  .top-row a {
+    font-size: clamp(18px, 4vw, 30px); /* Адаптивный размер ссылки */
+  }
+
+  h2 {
+    font-size: clamp(28px, 6vw, 47px); /* Адаптивный размер подзаголовка */
+  }
+
+  .order-grid {
+    grid-template-columns: 1fr;
+    margin-bottom: 32px; /* Меньший отступ до формы на мобильных */
+  }
+
+  .row {
+    grid-template-columns: 1fr auto auto;
+    font-size: clamp(20px, 4vw, 40px); /* Адаптивный размер текста таблицы */
+  }
+
+  .hint {
+    font-size: clamp(20px, 4vw, 35px); /* Адаптивный размер подсказки */
+  }
+
+  .form-grid {
+    grid-template-columns: 1fr;
+  }
+
+  .form-grid label {
+    font-size: clamp(22px, 4vw, 41px); /* Адаптивный размер подписей формы */
+  }
+
+  button {
+    font-size: clamp(24px, 4.5vw, 43px); /* Адаптивный размер текста кнопки */
+    width: 100%; /* На узком экране кнопка на всю ширину */
+  }
+}

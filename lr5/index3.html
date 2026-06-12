@@ -1,0 +1,249 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>z3/index3 - Адаптивная верстка</title>
+    <style>
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+        body { font-family: "Times New Roman", serif; padding: 20px; }
+
+        .layout {
+            width: 100%;
+            max-width: 1280px;
+            min-width: 800px;
+            margin: 0 auto;
+            border: 1px solid #000;
+        }
+
+        .header,
+        .footer {
+            height: 52px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            border-bottom: 1px solid #000;
+            font-size: 36px;
+            font-weight: 700;
+            line-height: 1;
+        }
+
+        .footer {
+            border-top: 1px solid #000;
+            border-bottom: 0;
+        }
+
+        /* Настольный вариант */
+        .grid {
+            display: flex;
+            flex-wrap: nowrap;
+            min-height: 156px;
+        }
+
+        .col-left,
+        .col-center,
+        .col-right {
+            display: flex;
+            flex-direction: column;
+        }
+
+        .col-left {
+            flex: 0 0 30%;
+        }
+
+        .col-center {
+            flex: 0 0 40%;
+        }
+
+        .col-right {
+            flex: 0 0 30%;
+        }
+
+        .block {
+            border: 1px solid #000;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 34px;
+            font-weight: 700;
+            line-height: 1;
+            height: 52px;
+            width: 100%;
+        }
+
+        .col-center .block {
+            flex: 1;
+            height: auto;
+        }
+
+        .tablet-row {
+            display: none;
+            width: 100%;
+            gap: 0;
+        }
+
+        .tablet-row .block {
+            min-width: 0;
+        }
+
+        /* 769px — 1024px: маленькие экраны, ноутбуки */
+        @media (min-width: 769px) and (max-width: 1024px) {
+            .layout { max-width: 1024px; }
+        }
+
+        /* 1025px — 1200px: большие экраны */
+        @media (min-width: 1025px) and (max-width: 1200px) {
+            .layout { max-width: 1200px; }
+        }
+
+        /* 1201px и больше: очень большие экраны */
+        @media (min-width: 1201px) {
+            .layout { max-width: 1280px; }
+        }
+
+        /* 481px — 768px: планшеты */
+        @media (min-width: 481px) and (max-width: 768px) {
+            .layout {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .grid {
+                flex-wrap: wrap;
+                min-height: auto;
+            }
+
+            .col-left {
+                flex: 0 0 55%;
+            }
+
+            .col-center {
+                flex: 0 0 45%;
+            }
+
+            .col-right {
+                display: none;
+            }
+
+            .col-right .block {
+                flex: 0 0 100%;
+                width: 100%;
+                height: 52px;
+            }
+
+            .tablet-row {
+                display: flex;
+            }
+
+            .tablet-row .block {
+                flex: 0 0 auto;
+                width: auto;
+            }
+
+            .tablet-row .b5-tablet {
+                flex: 0 0 55%;
+                width: 55%;
+            }
+
+            .tablet-row .b6-tablet {
+                flex: 0 0 45%;
+                width: 45%;
+            }
+
+            .b7 {
+                display: none;
+            }
+        }
+
+        /* 320px — 480px: мобильные устройства */
+        @media (max-width: 480px) {
+            body { padding: 10px; }
+
+            .layout {
+                min-width: 0;
+                max-width: 100%;
+            }
+
+            .grid {
+                flex-wrap: wrap;
+                min-height: auto;
+            }
+
+            .col-left,
+            .col-right {
+                flex: 0 0 100%;
+                flex-direction: column;
+                flex-wrap: nowrap;
+            }
+
+            .tablet-row {
+                flex: 0 0 100%;
+                flex-direction: row;
+                flex-wrap: nowrap;
+            }
+
+            .col-left .block,
+            .col-right .block,
+            .tablet-row .block {
+                flex: 0 0 auto;
+                width: auto;
+                height: 52px;
+            }
+
+            .tablet-row {
+                display: flex;
+                justify-content: space-between;
+                gap: 0;
+            }
+
+            .tablet-row .b5-tablet,
+            .tablet-row .b6-tablet {
+                flex: 0 0 50%;
+                width: 50%;
+            }
+
+            .col-right {
+                display: none;
+            }
+
+            .b7 {
+                display: none;
+            }
+
+            .col-center {
+                display: none;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="layout">
+        <div class="header">Шапка</div>
+
+        <div class="grid">
+            <div class="col-left">
+                <div class="block b1">1</div>
+                <div class="block b2">2</div>
+                <div class="block b3">3</div>
+            </div>
+
+            <div class="col-center">
+                <div class="block b4">4</div>
+            </div>
+
+            <div class="col-right">
+                <div class="block b5">5</div>
+                <div class="block b6">6</div>
+                <div class="block b7">7</div>
+            </div>
+
+            <div class="tablet-row">
+                <div class="block b5-tablet">5</div>
+                <div class="block b6-tablet">6</div>
+            </div>
+        </div>
+
+        <div class="footer">Подвал</div>
+    </div>
+</body>
+</html>

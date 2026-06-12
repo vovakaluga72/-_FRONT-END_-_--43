@@ -1,0 +1,110 @@
+<!DOCTYPE html>
+<html lang="ru">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>ЛР 10-13 — Variant 7</title>
+    <script src="script.js" defer></script>
+</head>
+<body>
+    <h1>Калюга Владимир — ЛР 10-13 (вариант 16)</h1>
+
+    <section>
+        <h2>Задание 1: Date</h2>
+        <button id="showYearButton">Показать год</button>
+    </section>
+
+    <section>
+        <h2>Задание 2: Циклы</h2>
+        <div id="loopOutput"></div>
+    </section>
+
+    <section>
+        <h2>Задание 3: Array</h2>
+        <div id="arrayOutput"></div>
+    </section>
+
+    <section>
+        <h2>Задание 4: Math</h2>
+        <button id="calculateMathButton">Вычислить y = 3x⁶ - 6x² - 7</button>
+        <div id="mathOutput"></div>
+    </section>
+
+    <section>
+        <h2>Задание 5: String</h2>
+        <div id="stringOutput"></div>
+    </section>
+
+    <script>
+        window.addEventListener('DOMContentLoaded', () => {
+            const variantNumber = 7;
+            const fullName = 'Калюга Владимир';
+
+            // Задание 1
+            document.getElementById('showYearButton').addEventListener('click', () => {
+                const currentYear = new Date().getFullYear();
+                alert('Текущий год: ' + currentYear);
+            });
+
+            // Задание 2 — вывод в столбик
+            const loopDiv = document.getElementById('loopOutput');
+            const times = variantNumber + 5;
+            let loopContent = '';
+            for (let i = 1; i <= times; i++) {
+                loopContent += `${i}. ${fullName}<br>`;
+            }
+            loopDiv.innerHTML = loopContent;
+
+            // Задание 3
+            const arrayDiv = document.getElementById('arrayOutput');
+            const numbers = [18, -5, 12, 7, 3];
+            const originalArrayText = `Исходный массив: [${numbers.join(', ')}]`;
+            const minValue = Math.min(...numbers);
+            const minIndex = numbers.indexOf(minValue);
+            const swapped = [...numbers];
+            [swapped[minIndex], swapped[swapped.length - 1]] = [swapped[swapped.length - 1], swapped[minIndex]];
+            const modifiedArrayText = `Измененный массив: [${swapped.join(', ')}]`;
+            // Добавляем вывод минимального элемента
+            const minElementText = `Минимальный элемент: ${minValue}`;
+            arrayDiv.innerHTML = originalArrayText + '<br>' + modifiedArrayText + '<br>' + minElementText;
+
+            // Задание 4
+            function calculateY(x) {
+                const numX = parseFloat(x);
+                if (isNaN(numX)) return null;
+                return 3 * Math.pow(numX, 6) - 6 * Math.pow(numX, 2) - 7;
+            }
+
+            document.getElementById('calculateMathButton').addEventListener('click', () => {
+                const resultArea = document.getElementById('mathOutput');
+                const value = prompt('Введите значение x:');
+                const y = calculateY(value);
+                if (y === null) {
+                    resultArea.textContent = 'Расчет не выполнен из-за некорректного ввода.';
+                    return;
+                }
+                resultArea.textContent = `Для x = ${value} y = ${y}`;
+            });
+
+            // Задание 5 — вывод в столбик
+            const stringDiv = document.getElementById('stringOutput');
+            const s1 = 'Я люблю Беларусь';
+            const s2 = 'Я учусь в Политехническом колледже';
+            const lengthS1 = s1.length;
+            const charIndex = variantNumber - 1;
+            const selectedChar = s1.charAt(charIndex) || '';
+            const asciiCode = selectedChar ? selectedChar.charCodeAt(0) : 'не найдено';
+            const replacedS2 = s2.replace(/е/g, '@');
+            stringDiv.innerHTML = `
+                S1 = "${s1}"<br>
+                Длина S1 = ${lengthS1}<br>
+                ${variantNumber}-й символ S1 = "${selectedChar}"<br>
+                ASCII-код символа = ${asciiCode}<br><br>
+                S2 = "${s2}"<br>
+                S2 после замены 'е' на '@' = "${replacedS2}"
+            `;
+        });
+    </script>
+</body>
+</html>

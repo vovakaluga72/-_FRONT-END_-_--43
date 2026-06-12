@@ -1,0 +1,55 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Заказ товара</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <!-- Основной контейнер всей страницы заказа -->
+  <main class="order-page">
+    <!-- Верхняя строка: заголовок и ссылка отмены -->
+    <header class="top-row">
+      <h1>Заказ товара</h1>
+      <a href="#">Отменить заказ</a>
+    </header>
+
+    <!-- Блок с названием товара и деталями расчета -->
+    <section class="product-section">
+      <h2>Строительный мусоропровод</h2>
+
+      <!-- Сетка из двух колонок: параметры и подсказка справа -->
+      <div class="order-grid">
+        <!-- Таблица параметров комплекта -->
+        <div class="params">
+          <div class="row"><span class="label strong">Высота:</span><span class="value strong">16 м</span></div>
+          <div class="row"><span class="label">Секций с цепями:</span><span class="value">15 шт.</span><span class="price">4 272 000 р.</span></div>
+          <div class="row"><span class="label">Погрузочных воронок:</span><span class="value">1 шт.</span><span class="price">312 000 р.</span></div>
+          <div class="row"><span class="label">Крепежей к окну:</span><span class="value">1 шт.</span><span class="price">720 000 р.</span></div>
+          <div class="row total"><span></span><span></span><span class="value">5 037 000 р.</span><span class="price">(с НДС)</span></div>
+        </div>
+
+        <!-- Подсказка для изменения заказа -->
+        <p class="hint">Чтобы изменить заказ, <a href="#">вернитесь</a> к расчёту комплекта.</p>
+      </div>
+    </section>
+
+    <!-- Форма отправки данных клиента -->
+    <form class="form-grid">
+      <label for="name">Представьтесь</label>
+      <input id="name" type="text" />
+
+      <label for="phone">Ваш телефон</label>
+      <input id="phone" type="tel" />
+
+      <label for="note">Примечания к заказу</label>
+      <textarea id="note"></textarea>
+
+      <!-- Пустая ячейка для выравнивания кнопки по второй колонке -->
+      <div></div>
+      <button type="submit">Отправить</button>
+    </form>
+  </main>
+</body>
+</html>

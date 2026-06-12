@@ -1,0 +1,1016 @@
+﻿:root {
+  --bg: #f3f3f3;
+  --text: #222;
+  --line: #dddddd;
+  --accent: #eb7054;
+  --gold: #9c8457;
+}
+
+/* Глобальные стили и сбросы */
+* {
+  box-sizing: border-box; /* Универсальная модель коробки */
+}
+
+body {
+  margin: 0; /* Убираем отступы */
+  font-family: Arial, sans-serif; /* Основной шрифт */
+  color: var(--text); /* Цвет текста */
+  background: var(--bg); /* Цвет фона */
+  padding-top: 104px; /* Отступ под фиксированную шапку */
+}
+
+/* Заголовки */
+h1, h2, h3 {
+  margin: 0;
+  font-family: Georgia, "Times New Roman", serif;
+}
+
+/* Контейнер для центрирования контента */
+.container {
+  width: min(1240px, calc(100% - 24px));
+  margin: 0 auto;
+}
+
+/* Стили шапки сайта */
+.header {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  z-index: 1000;
+  background: #fff;
+  border-bottom: 1px solid var(--line);
+}
+
+/* Верхняя панель с логотипом и контактами */
+.topbar {
+  min-height: 62px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+/* Логотип и название бренда */
+.brand-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+/* Круглый логотип */
+.logo-mark {
+  width: 48px;
+  height: 48px;
+  border-radius: 50%;
+  border: 1px solid #b69c66;
+  color: #8d7445;
+  display: grid;
+  place-items: center;
+  font-size: 10px;
+}
+
+/* Текстовое название бренда */
+.brand-text {
+  font-size: 16px;
+  font-weight: 700;
+  line-height: 1.2;
+}
+
+/* Контейнер для контактов и соц. сетей */
+.contact-wrap {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+/* Телефон */
+.phone {
+  color: #333;
+  text-decoration: none;
+  font-size: 14px;
+}
+
+/* Социальные сети */
+.socials {
+  display: flex;
+  gap: 4px;
+}
+
+/* Кнопки соц. сетей */
+.socials a {
+  width: 20px;
+  height: 20px;
+  border-radius: 50%;
+  border: 1px solid #b39a6a;
+  display: grid;
+  place-items: center;
+  text-decoration: none;
+  color: #8b744a;
+  font-size: 10px;
+}
+
+/* Кнопка по умолчанию */
+.btn {
+  height: 30px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 11px;
+  padding: 0 10px;
+  cursor: pointer;
+  transition: transform .2s ease, box-shadow .2s ease, background-color .2s ease;
+}
+
+/* Акцентная кнопка */
+.btn-accent {
+  background: var(--accent);
+  border-color: var(--accent);
+  color: #fff;
+}
+
+/* Простая hover-анимация для кнопок */
+.btn:hover,
+.card-btn:hover,
+.submit-btn:hover,
+.catalog-more:hover,
+.cta-form button:hover,
+.dealer-form button:hover,
+.actions button:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 16px rgba(0, 0, 0, .15);
+}
+
+/* Меню навигации */
+.menu {
+  display: flex;
+  gap: 12px;
+  align-items: center;
+  min-height: 36px;
+  overflow-x: auto;
+  white-space: nowrap;
+  padding-bottom: 6px;
+}
+
+/* Ссылки меню */
+.menu a {
+  text-decoration: none;
+  color: #444;
+  font-size: 11px;
+}
+
+/* Кнопка-бургер (по умолчанию скрыта) */
+.menu-toggle-wrap {
+  display: none;
+}
+
+.menu-toggle-checkbox {
+  position: absolute;
+  opacity: 0;
+  pointer-events: none;
+}
+
+.menu-toggle {
+  display: inline-block;
+  width: 34px;
+  height: 28px;
+  border: 0;
+  background: transparent;
+  padding: 0;
+  cursor: pointer;
+}
+
+.menu-toggle span {
+  display: block;
+  width: 100%;
+  height: 3px;
+  margin-bottom: 5px;
+  border-radius: 2px;
+  background: #444;
+}
+
+.menu-toggle span:last-child {
+  margin-bottom: 0;
+}
+
+/* Главная страница в меню */
+.menu-home {
+  background: var(--accent);
+  color: #fff !important;
+  padding: 6px 10px;
+}
+
+/* Секция "Hero" (главный баннер) */
+.hero {
+  margin-top: 10px;
+  background: #efefef;
+  border: 1px solid var(--line);
+  display: grid;
+  grid-template-columns: 1fr 300px;
+  gap: 12px;
+  padding: 14px;
+}
+
+/* Заголовок в hero-секции */
+.hero-left h1 {
+  font-size: 30px;
+  line-height: 1.2;
+  margin-bottom: 12px;
+}
+
+.benefits {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.benefit {
+  width: 80px;
+  text-align: center;
+}
+
+.benefit span {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  background: var(--accent);
+  color: #fff;
+  display: grid;
+  place-items: center;
+  margin: 0 auto 4px;
+}
+
+.benefit small {
+  font-size: 10px;
+}
+
+.dots {
+  display: flex;
+  gap: 6px;
+}
+
+.dots span {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: #b39d6e;
+  opacity: .5;
+}
+
+.dots .active {
+  opacity: 1;
+  background: #ed7458;
+}
+
+.hero-right {
+  position: relative;
+  min-height: 220px;
+  display: grid;
+  place-items: center;
+}
+
+.main-door {
+  width: 170px;
+  max-width: 100%;
+}
+
+.circle {
+  width: 70px;
+  height: 70px;
+  border-radius: 50%;
+  object-fit: cover;
+  position: absolute;
+  border: 2px solid #fff;
+}
+
+.circle-left {
+  left: 8px;
+  bottom: 30px;
+}
+
+.circle-top {
+  right: 8px;
+  top: 8px;
+}
+
+/* Catalog Section */
+.catalog {
+  padding: 14px 0 18px;
+  background: #f1f1f1;
+  position: relative;
+}
+
+.catalog-title-row {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  position: relative;
+  margin-bottom: 12px;
+}
+
+.catalog-title-row h2 {
+  font-size: 42px;
+}
+
+.up-btn {
+  position: absolute;
+  right: 0;
+  top: 2px;
+  width: 36px;
+  height: 36px;
+  border: 0;
+  background: var(--gold);
+  color: #fff;
+}
+
+.featured-card,
+.card-item {
+  background: #fff;
+  border: 1px solid #ececec;
+  padding: 8px;
+}
+
+.featured-card {
+  position: absolute;
+  left: 0;
+  top: 72px;
+  width: 228px;
+  box-shadow: 0 8px 18px rgba(0, 0, 0, 0.14);
+  z-index: 2;
+}
+
+.cards-grid {
+  margin-left: 250px;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px 12px;
+}
+
+.card-image-wrap {
+  background: #f7f7f7;
+  min-height: 150px;
+  display: grid;
+  place-items: center;
+  margin-bottom: 8px;
+  position: relative;
+}
+
+.card-image-wrap img {
+  width: 74%;
+  max-width: 120px;
+}
+
+.ribbon {
+  position: absolute;
+  top: 6px;
+  width: 18px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 8px;
+  clip-path: polygon(0 0,100% 0,100% 86%,50% 64%,0 86%);
+}
+
+.ribbon.blue {
+  right: 26px;
+  background: #2a89f1;
+}
+
+.ribbon.red {
+  right: 6px;
+  background: #f16e5a;
+}
+
+.cards-grid .card-item:nth-child(1) .card-image-wrap::after,
+.cards-grid .card-item:nth-child(5) .card-image-wrap::after {
+  content: "%";
+  position: absolute;
+  top: 6px;
+  right: 6px;
+  width: 18px;
+  height: 20px;
+  display: grid;
+  place-items: center;
+  color: #fff;
+  font-size: 8px;
+  background: #f16e5a;
+  clip-path: polygon(0 0,100% 0,100% 86%,50% 64%,0 86%);
+}
+
+.card-item h3,
+.featured-card h3 {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  line-height: 1.35;
+  margin-bottom: 6px;
+  min-height: 46px;
+}
+
+.specs {
+  margin: 6px 0;
+  padding: 6px 0;
+  border-top: 1px solid #ececec;
+  border-bottom: 1px solid #ececec;
+}
+
+.specs div {
+  display: flex;
+  justify-content: space-between;
+  font-size: 9px;
+  margin-bottom: 3px;
+}
+
+.specs dd {
+  margin: 0;
+  font-weight: 700;
+}
+
+.prices {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  border-top: 1px solid #ececec;
+  padding-top: 6px;
+}
+
+.prices strong {
+  font-size: 19px;
+  line-height: 1;
+}
+
+.prices small {
+  font-size: 9px;
+  color: #888;
+}
+
+.card-btn {
+  width: 100%;
+  height: 26px;
+  border: 0;
+  background: var(--gold);
+  color: #fff;
+  font-size: 10px;
+  margin-top: 8px;
+}
+
+.card-btn-accent {
+  background: var(--accent);
+}
+
+.catalog-more-wrap {
+  text-align: center;
+  margin-top: 16px;
+}
+
+.catalog-more {
+  border: 1px solid #f0a48f;
+  background: #fff;
+  color: #666;
+  font-size: 10px;
+  padding: 7px 22px;
+}
+
+/* Configurator Section */
+.configurator, .use-cases, .about {
+  margin-top: 12px;
+  padding: 16px;
+  background: #efefef;
+  border: 1px solid var(--line);
+}
+
+.configurator h2, .use-cases h2, .about h2 {
+  font-size: 28px;
+  text-align: center;
+  margin-bottom: 12px;
+  color: #1d3048;
+}
+
+.config-selects {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.simple-field {
+  background: #fff;
+  border: 1px solid #ddd;
+  height: 34px;
+  display: flex;
+  align-items: center;
+  padding: 0 8px;
+  font-size: 12px;
+}
+
+.config-middle {
+  display: grid;
+  grid-template-columns: 180px 1fr;
+  gap: 10px;
+}
+
+.photo-circle {
+  width: 170px;
+  height: 170px;
+  border-radius: 50%;
+  overflow: hidden;
+  margin: 0 auto;
+}
+
+.photo-circle img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
+.option-title {
+  font-size: 14px;
+  margin: 4px 0 8px;
+}
+
+.colors {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 8px;
+  margin-bottom: 10px;
+}
+
+.color {
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  border: 0;
+  background: #d6d6d6;
+}
+
+.color.active {
+  background: #fff;
+  border: 2px solid var(--accent);
+}
+
+.color.multicolor {
+  background: conic-gradient(red,yellow,lime,aqua,blue,magenta,red);
+}
+
+.sizes {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+  margin-bottom: 10px;
+}
+
+.sizes label {
+  font-size: 12px;
+  display: flex;
+  gap: 5px;
+  align-items: center;
+}
+
+.lead-fields {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.lead-fields input, .lead-fields textarea, .dealer-form input, .cta-form input, .cta-form button, .dealer-form button {
+  border: 1px solid #ddd;
+  background: #fff;
+  padding: 8px;
+  font-size: 12px;
+}
+
+.lead-fields textarea {
+  grid-column: 1 / -1;
+  min-height: 56px;
+}
+
+.policy {
+  text-align: center;
+  font-size: 10px;
+  color: #777;
+  margin: 8px 0;
+}
+
+.submit-btn {
+  display: block;
+  margin: 0 auto;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  height: 36px;
+  min-width: 170px;
+  font-size: 14px;
+}
+
+/* Use Cases Section */
+.use-grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 6px;
+}
+
+.use-card {
+  position: relative;
+  min-height: 120px;
+  overflow: hidden;
+}
+
+.use-card img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  filter: brightness(.7);
+}
+
+.use-card h3 {
+  position: absolute;
+  left: 8px;
+  right: 8px;
+  top: 10px;
+  color: #fff;
+  font-size: 14px;
+  line-height: 1.2;
+}
+
+/* Price CTA Section */
+.price-cta {
+  margin-top: 12px;
+  background: #26374a;
+  color: #fff;
+  padding: 14px 0;
+}
+
+.cta-wrap {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.cta-text h2 {
+  color: var(--accent);
+  font-size: 28px;
+  margin-bottom: 6px;
+}
+
+.cta-text p {
+  font-size: 14px;
+  margin: 0;
+}
+
+.cta-form {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.cta-form button {
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+}
+
+.cta-form small {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  opacity: .85;
+}
+
+/* About Section */
+.about-intro {
+  text-align: center;
+  font-size: 12px;
+  max-width: 900px;
+  margin: 0 auto 12px;
+}
+
+.about-layout {
+  display: grid;
+  grid-template-columns: 1fr 240px 1fr;
+  gap: 12px;
+  align-items: center;
+}
+
+.about-list {
+  list-style: none;
+  padding: 0;
+  margin: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.about-list li {
+  font-size: 13px;
+  padding-left: 18px;
+  position: relative;
+}
+
+.about-list li::before {
+  content: "•";
+  position: absolute;
+  left: 0;
+  color: var(--accent);
+}
+
+.door-center {
+  text-align: center;
+}
+
+.door-center img {
+  width: 200px;
+  max-width: 100%;
+}
+
+.warranty {
+  margin: 6px auto 0;
+  background: #f5e8c5;
+  color: #9e7c37;
+  width: 56px;
+  padding: 4px 0;
+  font-size: 10px;
+}
+
+.warranty strong {
+  font-size: 22px;
+  line-height: 1;
+}
+
+/* Dealer Banner */
+.dealer-banner {
+  margin-top: 12px;
+  background: #e8e2d2;
+}
+
+.dealer-wrap {
+  min-height: 180px;
+  display: grid;
+  grid-template-columns: 1fr 280px;
+  gap: 10px;
+  align-items: stretch;
+}
+
+.dealer-content {
+  padding: 16px 0;
+}
+
+.dealer-content h2 {
+  color: var(--accent);
+  font-size: 30px;
+  margin-bottom: 8px;
+}
+
+.dealer-wrap img {
+  width: 100%;
+  height: 180px;
+  object-fit: cover;
+}
+
+.dealer-form {
+  max-width: 360px;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 6px;
+}
+
+.dealer-form button {
+  grid-column: 1 / 2;
+  border: 0;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 700;
+}
+
+.dealer-form small {
+  grid-column: 1 / -1;
+  font-size: 10px;
+  color: #555;
+}
+
+/* Where to Buy Section */
+.where-buy {
+  margin-top: 12px;
+  display: grid;
+  grid-template-columns: 1.2fr 1fr;
+  gap: 10px;
+}
+
+.buy-map {
+  min-height: 220px;
+  background: #e7e2d3;
+  border: 1px solid #ddd;
+  position: relative;
+}
+
+.map-mark {
+  position: absolute;
+  left: 45%;
+  top: 35%;
+  width: 18px;
+  height: 18px;
+  border-radius: 50% 50% 50% 0;
+  transform: rotate(-45deg);
+  background: var(--accent);
+}
+
+.map-mark::after {
+  content: "";
+  position: absolute;
+  left: 4px;
+  top: 4px;
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  background: #fff;
+}
+
+.buy-list {
+  background: #fff;
+  border: 1px solid #ddd;
+  padding: 10px;
+}
+
+.buy-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 8px;
+}
+
+.buy-head h2 {
+  font-size: 24px;
+}
+
+.buy-head a {
+  font-size: 11px;
+  color: var(--accent);
+  text-decoration: none;
+}
+
+.shop {
+  border-bottom: 1px solid #eee;
+  padding: 6px 0;
+}
+
+.shop.active {
+  border: 1px solid var(--accent);
+  padding: 6px;
+}
+
+.shop h3 {
+  font-family: Arial, sans-serif;
+  font-size: 11px;
+  margin-bottom: 3px;
+}
+
+.shop p {
+  margin: 0 0 3px;
+  font-size: 10px;
+}
+
+/* Footer */
+.footer-main {
+  margin-top: 12px;
+  background: #f0f0f0;
+  border-top: 1px solid #c7b089;
+}
+
+.footer-wrap {
+  display: grid;
+  grid-template-columns: 1.4fr 1fr 1fr 1.2fr;
+  gap: 12px;
+  padding: 12px 0;
+}
+
+.footer-col h3 {
+  font-size: 12px;
+  margin-bottom: 6px;
+}
+
+.footer-col p, .footer-col a {
+  display: block;
+  margin: 0 0 4px;
+  color: #3e3e3e;
+  text-decoration: none;
+  font-size: 10px;
+}
+
+.footer-socials {
+  display: flex;
+  gap: 4px;
+  margin-top: 4px;
+}
+
+.footer-socials a {
+  width: 18px;
+  height: 18px;
+  border: 1px solid #b39a6b;
+  border-radius: 50%;
+  display: grid;
+  place-items: center;
+  font-size: 8px;
+  color: #8f7850;
+}
+
+.actions button {
+  width: 100%;
+  height: 28px;
+  margin-bottom: 6px;
+  border: 1px solid #ccc;
+  background: #fff;
+  font-size: 10px;
+}
+
+.footer-bottom {
+  border-top: 1px solid #ddd;
+  min-height: 30px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  color: #666;
+  font-size: 9px;
+}
+
+/* Media Queries */
+@media (max-width: 800px) {
+  .hero, .config-middle, .cta-wrap, .dealer-wrap, .where-buy, .about-layout {
+    grid-template-columns: 1fr;
+  }
+
+  .featured-card {
+    position: static;
+    width: 100%;
+    margin-bottom: 10px;
+  }
+
+  .cards-grid {
+    margin-left: 0;
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .config-selects {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .sizes {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .lead-fields {
+    grid-template-columns: 1fr;
+  }
+
+  .use-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .footer-wrap {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* В телефонном/планшетном режиме включаем бургер и скрываем меню */
+  .menu-toggle-wrap {
+    display: flex;
+    justify-content: flex-end;
+    padding-bottom: 6px;
+  }
+
+  .menu {
+    display: none;
+    padding: 10px 12px;
+    background: #fff;
+    border-top: 1px solid var(--line);
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 8px;
+  }
+
+  .menu-toggle-checkbox:checked ~ .menu {
+    display: flex;
+  }
+}
+
+@media (max-width: 479px) {
+  .container {
+    width: calc(100% - 12px);
+  }
+
+  .hero-left h1, .catalog-title-row h2, .configurator h2, .use-cases h2, .about h2, .cta-text h2, .dealer-content h2, .buy-head h2 {
+    font-size: 22px;
+  }
+
+  .cards-grid, .config-selects, .sizes, .use-grid, .cta-form, .dealer-form, .footer-wrap {
+    grid-template-columns: 1fr;
+  }
+
+  .dealer-form button {
+    grid-column: auto;
+  }
+
+  .footer-bottom {
+    flex-direction: column;
+    gap: 3px;
+    padding: 6px 0;
+  }
+}

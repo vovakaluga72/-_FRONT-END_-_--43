@@ -1,0 +1,351 @@
+﻿<!DOCTYPE html>
+<html lang="ru">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Карточка товара</title>
+  <style>
+    /* Сброс стилей и базовые настройки */
+    * {
+      box-sizing: border-box;
+    }
+
+    /* Основной контейнер страницы */
+    body {
+      margin: 0;
+      min-height: 100vh;
+      display: flex;
+      justify-content: center;
+      align-items: flex-start;
+      padding: 20px 12px;
+      background: #f7f7f8;
+      font-family: "Segoe UI", Arial, sans-serif;
+      color: #2e3240;
+    }
+
+    /* Карточка товара */
+    .card {
+      width: 100%;
+      max-width: 760px;
+      background: #fff;
+      border: 1px solid #ececef;
+      border-radius: 8px;
+      padding: 36px 36px 26px;
+    }
+
+    /* Область с изображением товара */
+    .image-box {
+      position: relative;
+      border-radius: 4px;
+      background: #f2f2f3;
+      border: 1px solid #f0f0f2;
+      height: 388px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      overflow: hidden;
+    }
+
+    /* Изображение товара */
+    .image-box img {
+      width: 100%;
+      height: 100%;
+      max-width: 70%;
+      max-height: 100%;
+      object-fit: cover;
+      object-position: center;
+      display: block;
+    }
+
+    /* Кнопка "избранное" (сердечко) */
+    .fav {
+      position: absolute;
+      top: 16px;
+      right: 24px;
+      font-size: 33px;
+      line-height: 1;
+      color: #6e7077;
+      font-weight: 300;
+      user-select: none;
+    }
+
+    /* Название товара */
+    .title {
+      margin: 30px 0 8px;
+      font-size: 29px;
+      line-height: 1.2;
+      font-weight: 500;
+      color: #343847;
+    }
+
+    /* Цена товара */
+    .price {
+      margin: 0 0 24px;
+      font-size: 33px;
+      line-height: 1.2;
+      font-weight: 700;
+      color: #1f2434;
+    }
+
+    /* Заголовок секции размеров */
+    .sizes-title {
+      margin: 0 0 10px;
+      font-size: 30px;
+      font-weight: 700;
+      color: #2d3344;
+    }
+
+    /* Сетка размеров товара */
+    .sizes-grid {
+      display: grid;
+      grid-template-columns: 1fr auto 1fr auto 1fr;
+      row-gap: 12px;
+      column-gap: 12px;
+      align-items: end;
+      margin-bottom: 28px;
+    }
+
+    /* Подписи размеров (Длина, Ширина, Высота) */
+    .label {
+      font-size: 26px;
+      color: #a3a6ad;
+      line-height: 1;
+    }
+
+    /* Значения размеров */
+    .value {
+      font-size: 31px;
+      color: #343847;
+      line-height: 1;
+    }
+
+    /* Знак умножения (x) между размерами */
+    .mult {
+      font-size: 31px;
+      color: #535760;
+      line-height: 1;
+      text-align: center;
+      padding-bottom: 2px;
+    }
+
+    /* Выравнивание текста справа */
+    .end {
+      text-align: right;
+    }
+
+    /* Кнопка "В корзину" */
+    .btn {
+      width: 100%;
+      border: 0;
+      border-radius: 6px;
+      background: #3f4044;
+      color: #fff;
+      font-size: 31px;
+      font-weight: 700;
+      line-height: 1;
+      padding: 24px;
+      cursor: pointer;
+    }
+
+    /* Ссылка "Подробнее о товаре" */
+    .more {
+      display: block;
+      text-align: center;
+      margin-top: 26px;
+      font-size: 28px;
+      line-height: 1.15;
+      color: #b4b7be;
+      text-decoration-color: #b4b7be;
+      text-underline-offset: 4px;
+    }
+
+    /* Адаптив для планшетов (экран меньше 900px) */
+    @media (max-width: 900px) {
+      /* Карточка товара на планшетах */
+      .card {
+        max-width: 620px;
+        padding: 24px 22px 20px;
+      }
+
+      /* Область изображения на планшетах */
+      .image-box {
+        height: 300px;
+      }
+
+      /* Кнопка избранное на планшетах */
+      .fav {
+        font-size: 27px;
+        right: 18px;
+      }
+
+      /* Название товара на планшетах */
+      .title {
+        font-size: clamp(17px, 5.5vw, 25px);
+      }
+
+      /* Цена на планшетах */
+      .price {
+        font-size: clamp(20px, 6.6vw, 28px);
+      }
+
+      /* Заголовок размеров на планшетах */
+      .sizes-title {
+        font-size: clamp(19px, 5.8vw, 24px);
+      }
+
+      /* Подписи размеров на планшетах */
+      .label {
+        font-size: clamp(12px, 3.8vw, 19px);
+      }
+
+      /* Значения и знаки на планшетах */
+      .value,
+      .mult {
+        font-size: clamp(15px, 4.8vw, 23px);
+      }
+
+      /* Кнопка на планшетах */
+      .btn {
+        font-size: clamp(17px, 5.4vw, 24px);
+        padding: 18px;
+      }
+
+      /* Ссылка на планшетах */
+      .more {
+        font-size: clamp(14px, 4.5vw, 20px);
+      }
+    }
+
+    /* Адаптив для мобильных устройств (экран меньше 600px) */
+    @media (max-width: 600px) {
+      /* Карточка товара на мобильных */
+      .card {
+        padding: 16px 14px 14px;
+        border-radius: 6px;
+      }
+
+      /* Изображение на мобильных - полная ширина */
+      .image-box {
+        height: 220px;
+      }
+
+      /* Название товара на мобильных */
+      .title {
+        font-size: 20px;
+        margin: 20px 0 6px;
+      }
+
+      /* Цена на мобильных */
+      .price {
+        font-size: 22px;
+        margin: 0 0 16px;
+      }
+
+      /* Заголовок размеров на мобильных */
+      .sizes-title {
+        font-size: 18px;
+      }
+
+      /* Сетка размеров на мобильных - вертикальный список */
+      .sizes-grid {
+        display: flex;
+        flex-direction: column;
+        row-gap: 10px;
+        margin-bottom: 20px;
+      }
+
+      /* Подписи на мобильных */
+      .label {
+        font-size: 14px;
+      }
+
+      /* Значения на мобильных */
+      .value {
+        font-size: 16px;
+      }
+
+      /* Знаки умножения скрываем */
+      .mult {
+        display: none;
+      }
+
+      /* Кнопка на мобильных */
+      .btn {
+        font-size: 16px;
+        padding: 14px;
+        border-radius: 4px;
+      }
+
+      /* Ссылка на мобильных */
+      .more {
+        font-size: 14px;
+        margin-top: 18px;
+      }
+
+      /* Сердечко на мобильных */
+      .fav {
+        font-size: 20px;
+        top: 10px;
+        right: 12px;
+      }
+    }
+
+    /* Адаптив для очень маленьких экранов (до 400px) */
+    @media (max-width: 400px) {
+      .image-box {
+        height: 180px;
+      }
+
+      .title {
+        font-size: 18px;
+      }
+
+      .price {
+        font-size: 20px;
+      }
+
+      .label {
+        font-size: 12px;
+      }
+
+      .value {
+        font-size: 14px;
+      }
+
+      .btn {
+        font-size: 14px;
+        padding: 12px;
+      }
+    }
+  </style>
+</head>
+<body>
+  <article class="card">
+    <div class="image-box">
+      <img src="../image/lr8.jpg" alt="Кухонный стол Хэллер Light" />
+      <span class="fav">&#9825;</span>
+    </div>
+
+    <h1 class="title">Кухонный стол Хэллер Light</h1>
+    <p class="price">1082 руб.</p>
+
+    <h2 class="sizes-title">Размеры</h2>
+    <section class="sizes-grid" aria-label="Размеры стола">
+      <div class="label">Длина</div>
+      <div></div>
+      <div class="label">Ширина</div>
+      <div></div>
+      <div class="label end">Высота</div>
+
+      <div class="value">100 см</div>
+      <div class="mult">x</div>
+      <div class="value">100 см</div>
+      <div class="mult">x</div>
+      <div class="value end">75 см</div>
+    </section>
+
+    <button class="btn" type="button">В корзину</button>
+    <a class="more" href="#">Подробнее о товаре</a>
+  </article>
+</body>
+</html>
